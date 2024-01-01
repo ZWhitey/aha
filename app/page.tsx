@@ -1,4 +1,5 @@
 import ProfileClient from './ProfileClient';
+import UpdateProfile from './UpdateProfile';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <a href="/api/auth/logout">Logout</a>
       </div>
       <ProfileClient></ProfileClient>
+      <UpdateProfile></UpdateProfile>
     </>
   );
 }
