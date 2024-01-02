@@ -37,7 +37,7 @@ export async function GET(req: Request, { params }: Params) {
         'Content-Type': 'application/json',
       },
     });
-    console.log(res.data);
+
     const data = {
       name: res.data.name,
       email: res.data.email,
