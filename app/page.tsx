@@ -1,5 +1,6 @@
 import ProfileClient from './ProfileClient';
 import UpdateProfile from './UpdateProfile';
+import Dashboard from './Dashboard';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       </div>
       <ProfileClient></ProfileClient>
       <UpdateProfile></UpdateProfile>
+      <Dashboard></Dashboard>
     </>
   );
 }
