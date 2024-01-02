@@ -82,7 +82,7 @@ Create a simple app where users can sign up and sign in from a landing page into
   3. Re-enter new password
 - [x] **Cookies and Logout [50 points]**
       Store cookies in the browser so that next time a logged in user returns to your site, the user will be automatically logged in. Add a logout feature in the user profile so that cookies can be cleared.
-- [ ] **User Database Dashboard [50 points]**
+- [x] **User Database Dashboard [50 points]**
       Create a dashboard with a list of all users that have signed up to your app. For each user, show the following information:
   1. Timestamp of user sign up.
   2. Number of times logged in.
