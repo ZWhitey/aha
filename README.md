@@ -73,7 +73,7 @@ Create a simple app where users can sign up and sign in from a landing page into
 
   You can use any third party tool, library, or API for this feature.
 
-- [ ] **User Profile [20 points]**
+- [x] **User Profile [20 points]**
       The user profile will display the user’s email and name (from Google OAuth). In addition, the user can reset their name. Everytime the user goes to user profile, the user should see the name they have chosen.
 - [ ] **Reset Password [30 points]**
       In the simple dashboard, add the ability to reset password. The password must meet the same criterias as defined previously. In addition, the user must enter 3 text input boxes:
