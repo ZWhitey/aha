@@ -87,7 +87,7 @@ Create a simple app where users can sign up and sign in from a landing page into
   1. Timestamp of user sign up.
   2. Number of times logged in.
   3. Timestamp of the last user session. For users with cookies, session and login may be different, since the user may not need to log in to start a new session.
-- [ ] **User Statistics [30 points]**
+- [x] **User Statistics [30 points]**
       At the top of the user database dashboard, show the following statistics:
   1. Total number of users who have signed up.
   2. Total number of users with active sessions today.
