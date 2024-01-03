@@ -1,28 +1,62 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { DashboardGetResponse } from './api/user/dashboard/route';
+import { StatisticGetResponse } from './api/user/statistic/route';
 
 export default function Dashboard() {
   const [table, setTable] = useState<DashboardGetResponse>();
+  const [statistic, setStatistic] = useState<StatisticGetResponse>();
 
   useEffect(() => {
-    getTable();
-  });
+    fetchData();
+  }, []);
 
-  function getTable() {
-    if (table) {
-      return;
+  async function fetchData() {
+    try {
+      const [tableData, statisticData] = await Promise.all([
+        fetch(`/api/user/dashboard`).then((res) => res.json()),
+        fetch(`/api/user/statistic`).then((res) => res.json()),
+      ]);
+
+      setTable(tableData);
+      setStatistic(statisticData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
-    fetch(`/api/user/dashboard`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTable(data);
-      });
   }
 
   return (
     <>
+      <h2>Statistic</h2>
+      {statistic && (
+        <div className="flex gap-2">
+          <div className="flex flex-col items-center justify-center">
+            <dt className="mb-2 text-3xl font-extrabold">
+              {statistic.totalUsers}
+            </dt>
+            <dd className="text-gray-500 dark:text-gray-400">Total Users</dd>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <dt className="mb-2 text-3xl font-extrabold">
+              {statistic.activeUsers}
+            </dt>
+            <dd className="text-gray-500 dark:text-gray-400">
+              Active Sessions
+            </dd>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <dt className="mb-2 text-3xl font-extrabold">
+              {statistic.averageActiveUsers?.toFixed(2)}
+            </dt>
+            <dd className="text-gray-500 dark:text-gray-400">
+              Average Active Sessions
+            </dd>
+          </div>
+        </div>
+      )}
+      <br />
       <h1>Dashboard</h1>
+
       {table && (
         <table>
           <tr>
