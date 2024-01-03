@@ -75,11 +75,16 @@ Create a simple app where users can sign up and sign in from a landing page into
 
 - [x] **User Profile [20 points]**
       The user profile will display the user’s email and name (from Google OAuth). In addition, the user can reset their name. Everytime the user goes to user profile, the user should see the name they have chosen.
-- [ ] **Reset Password [30 points]**
+- [?] **Reset Password [30 points]**
       In the simple dashboard, add the ability to reset password. The password must meet the same criterias as defined previously. In addition, the user must enter 3 text input boxes:
   1. Old passwordS
   2. New password
   3. Re-enter new password
+
+  ```
+  Note: Auth0 API cannot verify whether the user-entered password is correct. I believe directly utilizing Auth0's 'Forgot Password' functionality is the best solution, not only because it is easy to implement but also because it provides a higher level of security.
+  ```
+
 - [x] **Cookies and Logout [50 points]**
       Store cookies in the browser so that next time a logged in user returns to your site, the user will be automatically logged in. Add a logout feature in the user profile so that cookies can be cleared.
 - [x] **User Database Dashboard [50 points]**
@@ -92,3 +97,6 @@ Create a simple app where users can sign up and sign in from a landing page into
   1. Total number of users who have signed up.
   2. Total number of users with active sessions today.
   3. Average number of active session users in the last 7 days rolling.
+  ```
+  Note: Auth0 API provides daily statistical results, and real-time data is not available. Therefore, Total number of users with active sessions today will always be zero.
+  ```
