@@ -20,20 +20,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Swagger api document
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000/api/doc](http://localhost:3000/api/doc) to use api doc
 
 ## Assessment
 
@@ -76,7 +65,8 @@ Create a simple app where users can sign up and sign in from a landing page into
 - [x] **User Profile [20 points]**
       The user profile will display the user’s email and name (from Google OAuth). In addition, the user can reset their name. Everytime the user goes to user profile, the user should see the name they have chosen.
 - [?] **Reset Password [30 points]**
-      In the simple dashboard, add the ability to reset password. The password must meet the same criterias as defined previously. In addition, the user must enter 3 text input boxes:
+  In the simple dashboard, add the ability to reset password. The password must meet the same criterias as defined previously. In addition, the user must enter 3 text input boxes:
+
   1. Old passwordS
   2. New password
   3. Re-enter new password
