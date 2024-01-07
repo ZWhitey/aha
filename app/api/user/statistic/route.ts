@@ -9,13 +9,51 @@ export type StatisticGetResponse = {
   averageActiveUsers: number;
 };
 
+/**
+ * @swagger
+ * /api/user/statistic:
+ *   get:
+ *     summary: Get statistics
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/StatisticGetResponse'
+ *       '401':
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Unauthorized
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Something went wrong
+ * components:
+ *   schemas:
+ *     StatisticGetResponse:
+ *       type: object
+ *       properties:
+ *         totalUsers:
+ *           type: number
+ *           description: Total number of users
+ *         activeUsers:
+ *           type: number
+ *           description: Number of active users
+ *         averageActiveUsers:
+ *           type: number
+ *           description: Average number of active users
+ */
 export async function GET(req: Request) {
   try {
     const session = await getSession();
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const { user } = session;
 
     const totalUsers = await getTotalUsers();
     const { activeUsers, averageActiveUsers } = await getActiveUsers();
