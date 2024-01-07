@@ -27,9 +27,9 @@ export default function Dashboard() {
 
   return (
     <>
-      <h2>Statistic</h2>
+      <h1 className="text-2xl text-center">Statistic</h1>
       {statistic && (
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-center">
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-extrabold">
               {statistic.totalUsers}
@@ -55,27 +55,29 @@ export default function Dashboard() {
         </div>
       )}
       <br />
-      <h1>Dashboard</h1>
+      <h1 className="text-2xl text-center">Dashboard</h1>
 
       {table && (
-        <table>
-          <tr>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Sign up date</th>
-            <th>Logins</th>
-            <th>Latest Login</th>
-          </tr>
-          {table.map((row, index) => (
-            <tr key={index}>
-              <td>{row.email}</td>
-              <td>{row.name}</td>
-              <td>{row.signupDate}</td>
-              <td>{row.loginCount}</td>
-              <td>{row.lastLogin}</td>
+        <div className="flex gap-2 justify-center">
+          <table>
+            <tr>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Sign up date</th>
+              <th>Logins</th>
+              <th>Latest Login</th>
             </tr>
-          ))}
-        </table>
+            {table.map((row, index) => (
+              <tr key={index}>
+                <td>{row.email}</td>
+                <td>{row.name}</td>
+                <td>{row.signupDate}</td>
+                <td>{row.loginCount}</td>
+                <td>{row.lastLogin}</td>
+              </tr>
+            ))}
+          </table>
+        </div>
       )}
     </>
   );
