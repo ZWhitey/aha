@@ -10,13 +10,57 @@ export type DashboardGetResponse = {
   lastLogin: string;
 }[];
 
+/**
+ * @swagger
+ * /api/user/dashboard:
+ *   get:
+ *     summary: Get dashboard details
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/DashboardGetResponse'
+ *       '401':
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Unauthorized
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Something went wrong
+ * components:
+ *   schemas:
+ *     DashboardGetResponse:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *         name:
+ *           type: string
+ *         signupDate:
+ *           type: string
+ *           description: Date of user signup
+ *         loginCount:
+ *           type: number
+ *           description: Number of logins
+ *         lastLogin:
+ *           type: string
+ *           description: Last login date
+ */
 export async function GET(req: Request) {
   try {
     const session = await getSession();
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const { user } = session;
 
     const url = `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users`;
     const res = await axios.get(url, {

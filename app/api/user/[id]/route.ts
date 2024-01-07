@@ -18,6 +18,49 @@ export type UserGetResponse = {
   picture: string;
 };
 
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   get:
+ *     summary: Get user details by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the user
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserGetResponse'
+ *       '401':
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Unauthorized
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Something went wrong
+ * components:
+ *   schemas:
+ *     UserGetResponse:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *         name:
+ *           type: string
+ *         picture:
+ *           type: string
+ */
 export async function GET(req: Request, { params }: Params) {
   try {
     const session = await getSession();
@@ -53,6 +96,53 @@ export async function GET(req: Request, { params }: Params) {
   }
 }
 
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   patch:
+ *     summary: Update user details by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PatchForm'
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *       '400':
+ *         description: Bad Request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Name must be between 1 and 300 characters
+ *       '401':
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Unauthorized
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Something went wrong
+ * components:
+ *   schemas:
+ *     PatchForm:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ */
 export async function PATCH(req: Request, { params }: Params) {
   try {
     const session = await getSession();
