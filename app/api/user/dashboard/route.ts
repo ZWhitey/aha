@@ -2,6 +2,7 @@ import { getSession } from '@auth0/nextjs-auth0';
 import axios from 'axios';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 export type DashboardGetResponse = {
   email: string;
   name: string;
