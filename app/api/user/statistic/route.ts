@@ -3,6 +3,7 @@ import axios from 'axios';
 import { NextResponse } from 'next/server';
 import dayjs from 'dayjs';
 
+export const dynamic = 'force-dynamic';
 export type StatisticGetResponse = {
   totalUsers: number;
   activeUsers: number;
