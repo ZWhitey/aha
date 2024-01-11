@@ -56,6 +56,14 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const { user } = session;
+    if (!user?.email_verified) {
+      return NextResponse.json(
+        { error: 'Forbidden', message: 'Email is not verified' },
+        { status: 403 }
+      );
+    }
+
     const totalUsers = await getTotalUsers();
     const { activeUsers, averageActiveUsers } = await getActiveUsers();
 

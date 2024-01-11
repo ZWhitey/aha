@@ -3,14 +3,18 @@ import { useEffect, useState } from 'react';
 import { DashboardGetResponse } from './api/user/dashboard/route';
 import { StatisticGetResponse } from './api/user/statistic/route';
 import dayjs from 'dayjs';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function Dashboard() {
+  const { user, error, isLoading } = useUser();
   const [table, setTable] = useState<DashboardGetResponse>();
   const [statistic, setStatistic] = useState<StatisticGetResponse>();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (user?.email_verified) {
+      fetchData();
+    }
+  }, [user?.email_verified]);
 
   async function fetchData() {
     try {
@@ -24,6 +28,15 @@ export default function Dashboard() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+  }
+  if (isLoading) return <div className="text-center">Loading...</div>;
+
+  if (!user?.email_verified) {
+    return (
+      <div className="text-center">
+        You need to verify Email to access dashboard
+      </div>
+    );
   }
 
   return (

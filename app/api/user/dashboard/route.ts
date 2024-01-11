@@ -63,6 +63,14 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const { user } = session;
+    if (!user?.email_verified) {
+      return NextResponse.json(
+        { error: 'Forbidden', message: 'Email is not verified' },
+        { status: 403 }
+      );
+    }
+
     const url = `${process.env.AUTH0_ISSUER_BASE_URL}/api/v2/users`;
     const res = await axios.get(url, {
       headers: {
