@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { DashboardGetResponse } from './api/user/dashboard/route';
 import { StatisticGetResponse } from './api/user/statistic/route';
+import dayjs from 'dayjs';
 
 export default function Dashboard() {
   const [table, setTable] = useState<DashboardGetResponse>();
@@ -71,9 +72,9 @@ export default function Dashboard() {
               <tr key={index}>
                 <td>{row.email}</td>
                 <td>{row.name}</td>
-                <td>{row.signupDate}</td>
+                <td>{dayjs(row.signupDate).format('YYYY/MM/DD')}</td>
                 <td>{row.loginCount}</td>
-                <td>{row.lastLogin}</td>
+                <td>{dayjs(row.lastLogin).format('YYYY/MM/DD HH:mm:ss')}</td>
               </tr>
             ))}
           </table>
